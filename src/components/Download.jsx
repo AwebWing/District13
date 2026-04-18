@@ -36,7 +36,7 @@ export default function Download() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-heading text-6xl md:text-8xl text-[var(--white)] mb-4">
+          <h2 className="font-heading text-5xl md:text-8xl text-[var(--white)] mb-4">
             SECURE THE INTEL
           </h2>
           <div className="w-24 h-1 bg-[var(--amber)] mx-auto mb-8" />
@@ -90,8 +90,8 @@ export default function Download() {
             </div>
 
             {/* Terminal Content */}
-            <div className="p-6 font-mono">
-              <div className="flex items-start justify-between">
+            <div className="p-4 md:p-6 font-mono overflow-x-auto">
+              <div className="flex items-start justify-between min-w-[300px]">
                 <div className="flex-1">
                   <span className="text-green-400">$ </span>
                   <span className="text-[var(--green)]">{compileCommand}</span>

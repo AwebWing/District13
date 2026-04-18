@@ -115,7 +115,7 @@ export default function Hero() {
         >
           {/* Title */}
           <motion.h1
-            className="font-heading text-8xl md:text-[12rem] leading-none tracking-wider text-[var(--white)] mb-4"
+            className="font-heading text-5xl sm:text-7xl md:text-8xl lg:text-[12rem] leading-none tracking-wider text-[var(--white)] mb-8"
             style={{ textShadow: '0 0 30px rgba(217, 119, 6, 0.6), 0 0 60px rgba(249, 115, 22, 0.3)' }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
@@ -124,22 +124,12 @@ export default function Hero() {
             DISTRICT 13
           </motion.h1>
 
-          <motion.h1
-            className="font-heading text-6xl md:text-8xl leading-none tracking-wider text-[var(--amber)] mb-6"
-            style={{ textShadow: '0 0 20px rgba(249, 115, 22, 0.8), 0 0 40px rgba(217, 119, 6, 0.4)' }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 1, delay: 0.4 }}
-          >
-            REBELLION
-          </motion.h1>
-
           {/* Subtitle */}
           <motion.p
-            className="font-body text-xl md:text-2xl tracking-[0.5em] uppercase text-[var(--white)] mb-12"
+            className="font-body text-lg md:text-2xl tracking-[0.2em] md:tracking-[0.5em] uppercase text-[var(--white)] mb-12"
             style={{ textShadow: '0 0 10px rgba(255,255,255,0.3)' }}
             initial={{ opacity: 0, letterSpacing: '0em' }}
-            animate={inView ? { opacity: 1, letterSpacing: '0.5em' } : {}}
+            animate={inView ? { opacity: 1, letterSpacing: window.innerWidth < 768 ? '0.2em' : '0.5em' } : {}}
             transition={{ duration: 1, delay: 0.6 }}
           >
             The fire rises. Join the resistance.
