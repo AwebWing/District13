@@ -10,7 +10,7 @@ function GithubIcon() {
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[var(--bg)] border-t border-[var(--red)]">
+    <footer className="relative bg-[var(--bg)] border-t border-[var(--amber)]">
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="grid md:grid-cols-3 gap-6 items-center">
           <motion.div
@@ -19,8 +19,8 @@ export default function Footer() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="font-heading text-xl tracking-wider text-[var(--red)]">
-              WARZONE PLATFORMER
+            <span className="font-heading text-xl tracking-wider text-[var(--amber)]">
+              DISTRICT 13 REBELLION
             </span>
           </motion.div>
 
@@ -43,7 +43,7 @@ export default function Footer() {
           >
             <motion.a
               href="#"
-              className="inline-flex items-center gap-2 text-[var(--white)]/60 hover:text-[var(--red)] transition-colors"
+              className="inline-flex items-center gap-2 text-[var(--white)]/60 hover:text-[var(--amber)] transition-colors"
               whileHover={{ scale: 1.05 }}
             >
               <GithubIcon />

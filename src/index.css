@@ -2,14 +2,16 @@
 
 :root {
   /* Color Palette */
-  --bg: #080808;
-  --surface: #111111;
-  --red: #e81c1c;
-  --red-glow: #ff3333;
-  --white: #f2ede8;
-  --gray: #2a2a2a;
-  --gold: #c9922a;
-  --green: #00ff88;
+  --bg: #0a0a0b;
+  --surface: #141416;
+  --amber: #d97706;
+  --amber-glow: #f97316;
+  --steel: #475569;
+  --gunmetal: #1e293b;
+  --white: #f3f4f6;
+  --gray: #2d2d30;
+  --gold: #b45309;
+  --green: #10b981;
 
   /* Typography */
   --font-heading: 'Bebas Neue', sans-serif;
@@ -41,7 +43,7 @@ body {
   left: 0;
   width: var(--cursor-size);
   height: var(--cursor-size);
-  background-color: var(--red);
+  background-color: var(--amber);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
@@ -55,7 +57,7 @@ body {
   left: 0;
   width: var(--cursor-lag-size);
   height: var(--cursor-lag-size);
-  border: 1px solid rgba(232, 28, 28, 0.3);
+  border: 1px solid rgba(217, 119, 6, 0.3);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
@@ -68,7 +70,7 @@ body {
 
 .custom-cursor-lag.hovered {
   transform: scale(1.2);
-  border-color: rgba(232, 28, 28, 0.6);
+  border-color: rgba(217, 119, 6, 0.6);
 }
 
 /* Grain Overlay */
@@ -97,7 +99,7 @@ body {
 
 .scroll-progress-bar {
   height: 100%;
-  background: var(--red);
+  background: var(--amber);
   transform-origin: left;
 }
 
@@ -189,8 +191,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Red Glow Animation */
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(232, 28, 28, 0.4); }
-  50% { box-shadow: 0 0 40px rgba(232, 28, 28, 0.8); }
+  0%, 100% { box-shadow: 0 0 20px rgba(217, 119, 6, 0.4); }
+  50% { box-shadow: 0 0 40px rgba(217, 119, 6, 0.8); }
 }
 
 .pulse-glow {
@@ -221,24 +223,26 @@ button:hover, a.button:hover {
 .font-body { font-family: var(--font-body); }
 .font-mono { font-family: var(--font-mono); }
 
-.text-red { color: var(--red); }
+.text-amber { color: var(--amber); }
 .text-gold { color: var(--gold); }
 .text-white { color: var(--white); }
 .text-green { color: var(--green); }
+.text-steel { color: var(--steel); }
 
 .bg-surface { background-color: var(--surface); }
-.bg-red { background-color: var(--red); }
+.bg-amber { background-color: var(--amber); }
 
-.border-red { border-color: var(--red); }
+.border-amber { border-color: var(--amber); }
 .border-gray { border-color: var(--gray); }
 .border-gold { border-color: var(--gold); }
+.border-steel { border-color: var(--steel); }
 
-.shadow-red-glow {
-  box-shadow: 0 0 20px rgba(232, 28, 28, 0.5);
+.shadow-amber-glow {
+  box-shadow: 0 0 20px rgba(217, 119, 6, 0.5);
 }
 
-.text-shadow-red-glow {
-  text-shadow: 0 0 20px rgba(232, 28, 28, 0.8), 0 0 40px rgba(232, 28, 28, 0.4);
+.text-shadow-amber-glow {
+  text-shadow: 0 0 20px rgba(217, 119, 6, 0.8), 0 0 40px rgba(249, 115, 22, 0.4);
 }
 
 /* Section Spacing */

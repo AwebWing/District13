@@ -5,13 +5,13 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ChevronDown } from 'lucide-react';
 
-function FloatingShard({ position, rotation, scale }) {
+function Ember({ position, rotation, scale }) {
   const meshRef = useRef();
 
   const speed = useMemo(() => ({
-    x: Math.random() * 0.2 - 0.1,
-    y: Math.random() * 0.2 - 0.1,
-    z: Math.random() * 0.2 - 0.1,
+    x: Math.random() * 0.4 - 0.2,
+    y: Math.random() * 0.5 + 0.1, // Float upwards like ash
+    z: Math.random() * 0.4 - 0.2,
   }), []);
 
   useFrame((state, delta) => {
@@ -20,56 +20,57 @@ function FloatingShard({ position, rotation, scale }) {
       meshRef.current.position.y += speed.y * delta;
       meshRef.current.position.z += speed.z * delta;
 
-      meshRef.current.rotation.x += delta * 0.2;
-      meshRef.current.rotation.y += delta * 0.3;
+      meshRef.current.rotation.x += delta * 0.5;
+      meshRef.current.rotation.y += delta * 0.2;
 
-      // Bounds checking
-      if (meshRef.current.position.x > 15) meshRef.current.position.x = -15;
-      if (meshRef.current.position.x < -15) meshRef.current.position.x = 15;
-      if (meshRef.current.position.y > 10) meshRef.current.position.y = -10;
-      if (meshRef.current.position.y < -10) meshRef.current.position.y = 10;
-      if (meshRef.current.position.z > 10) meshRef.current.position.z = -10;
-      if (meshRef.current.position.z < -10) meshRef.current.position.z = 10;
+      // Reset to bottom when goes off top
+      if (meshRef.current.position.y > 15) {
+        meshRef.current.position.y = -15;
+        meshRef.current.position.x = (Math.random() - 0.5) * 30;
+      }
+      
+      if (meshRef.current.position.x > 20) meshRef.current.position.x = -20;
+      if (meshRef.current.position.x < -20) meshRef.current.position.x = 20;
     }
   });
 
   return (
     <mesh ref={meshRef} position={position} rotation={rotation} scale={scale}>
-      <icosahedronGeometry args={[1, 0]} />
+      <dodecahedronGeometry args={[0.5, 0]} />
       <meshStandardMaterial
-        color="#e81c1c"
-        emissive="#ff0000"
-        emissiveIntensity={0.5}
-        roughness={0.3}
-        metalness={0.8}
+        color={Math.random() > 0.5 ? "#d97706" : "#4b5563"} // Amber or Gray ash
+        emissive={Math.random() > 0.5 ? "#f97316" : "#000000"}
+        emissiveIntensity={2}
+        roughness={0.8}
+        metalness={0.2}
       />
     </mesh>
   );
 }
 
 function Scene() {
-  const shards = useMemo(() => {
-    return Array.from({ length: 50 }, (_, i) => ({
+  const embers = useMemo(() => {
+    return Array.from({ length: 80 }, (_, i) => ({
       position: [
+        (Math.random() - 0.5) * 40,
         (Math.random() - 0.5) * 30,
-        (Math.random() - 0.5) * 20,
-        (Math.random() - 0.5) * 20 - 10,
+        (Math.random() - 0.5) * 20 - 5,
       ],
       rotation: [Math.random() * Math.PI, Math.random() * Math.PI, 0],
-      scale: [Math.random() * 0.4 + 0.1, Math.random() * 0.4 + 0.1, Math.random() * 0.4 + 0.1],
+      scale: Math.random() * 0.2 + 0.05,
     }));
   }, []);
 
   return (
     <>
       <PerspectiveCamera makeDefault position={[0, 0, 15]} fov={50} />
-      <ambientLight intensity={0.2} />
-      <pointLight position={[0, 10, 5]} intensity={1} color="#ff0000" />
-      <pointLight position={[-10, -5, -5]} intensity={0.5} color="#ff0000" />
-      <fog attach="fog" args={['#080808', 10, 50]} />
+      <ambientLight intensity={0.1} />
+      <pointLight position={[0, -5, 5]} intensity={2} color="#f97316" />
+      <pointLight position={[10, 5, -5]} intensity={1} color="#d97706" />
+      <fog attach="fog" args={['#0a0a0b', 5, 35]} />
 
-      {shards.map((shard, i) => (
-        <FloatingShard key={i} {...shard} />
+      {embers.map((ember, i) => (
+        <Ember key={i} {...ember} />
       ))}
     </>
   );
@@ -115,22 +116,22 @@ export default function Hero() {
           {/* Title */}
           <motion.h1
             className="font-heading text-8xl md:text-[12rem] leading-none tracking-wider text-[var(--white)] mb-4"
-            style={{ textShadow: '0 0 30px rgba(232, 28, 28, 0.8), 0 0 60px rgba(232, 28, 28, 0.4)' }}
+            style={{ textShadow: '0 0 30px rgba(217, 119, 6, 0.6), 0 0 60px rgba(249, 115, 22, 0.3)' }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            WARZONE
+            DISTRICT 13
           </motion.h1>
 
           <motion.h1
-            className="font-heading text-6xl md:text-8xl leading-none tracking-wider text-[var(--red)] mb-6"
-            style={{ textShadow: '0 0 20px rgba(232, 28, 28, 1), 0 0 40px rgba(232, 28, 28, 0.5)' }}
+            className="font-heading text-6xl md:text-8xl leading-none tracking-wider text-[var(--amber)] mb-6"
+            style={{ textShadow: '0 0 20px rgba(249, 115, 22, 0.8), 0 0 40px rgba(217, 119, 6, 0.4)' }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 1, delay: 0.4 }}
           >
-            PLATFORMER
+            REBELLION
           </motion.h1>
 
           {/* Subtitle */}
@@ -141,7 +142,7 @@ export default function Hero() {
             animate={inView ? { opacity: 1, letterSpacing: '0.5em' } : {}}
             transition={{ duration: 1, delay: 0.6 }}
           >
-            Survive. Solve. Dominate.
+            The fire rises. Join the resistance.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -153,20 +154,20 @@ export default function Hero() {
           >
             <motion.a
               href="#download"
-              className="group relative px-10 py-4 bg-[var(--red)] font-heading text-xl tracking-wider text-white overflow-hidden"
-              whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(232, 28, 28, 0.8)' }}
+              className="group relative px-10 py-4 bg-[var(--amber)] font-heading text-xl tracking-wider text-white overflow-hidden"
+              whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(217, 119, 6, 0.8)' }}
               whileTap={{ scale: 0.97 }}
             >
               <span className="relative z-10 flex items-center gap-3">
                 <span>⬇</span> DOWNLOAD FOR UBUNTU
               </span>
-              <div className="absolute inset-0 bg-[var(--red-glow)] opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-[var(--amber-glow)] opacity-0 group-hover:opacity-100 transition-opacity" />
             </motion.a>
 
             <motion.a
               href="#gameplay"
-              className="group px-10 py-4 border-2 border-[var(--red)] font-heading text-xl tracking-wider text-[var(--red)] hover:bg-[var(--red)] hover:text-white transition-all"
-              whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(232, 28, 28, 0.5)' }}
+              className="group px-10 py-4 border-2 border-[var(--amber)] font-heading text-xl tracking-wider text-[var(--amber)] hover:bg-[var(--amber)] hover:text-white transition-all"
+              whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(217, 119, 6, 0.5)' }}
               whileTap={{ scale: 0.97 }}
             >
               HOW TO PLAY
@@ -186,7 +187,7 @@ export default function Hero() {
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
         >
-          <ChevronDown size={40} className="text-[var(--red)]" />
+          <ChevronDown size={40} className="text-[var(--amber)]" />
         </motion.div>
       </motion.div>
     </section>

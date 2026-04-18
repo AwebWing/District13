@@ -6,26 +6,26 @@ const features = [
   {
     number: '01',
     icon: Sword,
-    title: 'WAVE SYSTEM',
-    description: '3 escalating waves per level before the boss awakens',
+    title: 'GUERRILLA TACTICS',
+    description: '3 escalating waves per zone before the sector is liberated',
   },
   {
     number: '02',
     icon: Brain,
-    title: 'QUIZ OR PUZZLE',
-    description: 'Clear your mind to unlock deadlier weapons',
+    title: 'INTEL DECRYPTION',
+    description: 'Solve technical puzzles to unlock advanced weaponry',
   },
   {
     number: '03',
     icon: Users,
-    title: 'CO-OP MODE',
-    description: 'Split screen. Same chaos. One winner.',
+    title: 'RESISTANCE SQUAD',
+    description: 'Split screen co-op. Fight together or fall alone.',
   },
   {
     number: '04',
     icon: Trophy,
-    title: 'LEADERBOARD',
-    description: 'K/D ratio + speed bonus. Your legacy, written in kills.',
+    title: 'HALL OF HEROES',
+    description: 'Your contribution to the cause, recorded in history.',
   },
 ];
 
@@ -68,9 +68,9 @@ export default function Features() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="font-heading text-6xl md:text-8xl text-[var(--white)] mb-4">
-            WHAT AWAITS YOU
+            REBEL CAPABILITIES
           </h2>
-          <div className="w-24 h-1 bg-[var(--red)] mx-auto" />
+          <div className="w-24 h-1 bg-[var(--amber)] mx-auto" />
         </motion.div>
 
         {/* Features Grid */}
@@ -84,15 +84,15 @@ export default function Features() {
             <motion.div
               key={feature.number}
               variants={cardVariants}
-              className="group relative p-8 bg-[var(--surface)] border-l-2 border-[var(--red)] hover:border-[var(--red-glow)] transition-colors"
+              className="group relative p-8 bg-[var(--surface)] border-l-2 border-[var(--amber)] hover:border-[var(--amber-glow)] transition-colors"
               whileHover={{
                 y: -6,
-                boxShadow: '0 10px 40px rgba(232, 28, 28, 0.3)',
+                boxShadow: '0 10px 40px rgba(217, 119, 6, 0.3)',
               }}
             >
               {/* Watermark Number */}
               <span
-                className="absolute top-4 right-4 font-heading text-9xl text-[var(--red)] opacity-10 select-none"
+                className="absolute top-4 right-4 font-heading text-9xl text-[var(--amber)] opacity-10 select-none"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 {feature.number}
@@ -100,7 +100,7 @@ export default function Features() {
 
               {/* Content */}
               <div className="relative z-10">
-                <div className="w-14 h-14 mb-6 flex items-center justify-center border border-[var(--red)] text-[var(--red)] group-hover:text-[var(--red-glow)] group-hover:border-[var(--red-glow)] transition-colors">
+                <div className="w-14 h-14 mb-6 flex items-center justify-center border border-[var(--amber)] text-[var(--amber)] group-hover:text-[var(--amber-glow)] group-hover:border-[var(--amber-glow)] transition-colors">
                   <feature.icon size={32} strokeWidth={1.5} />
                 </div>
 
@@ -115,7 +115,7 @@ export default function Features() {
 
               {/* Hover Glow Effect */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-r from-[var(--red)]/5 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[var(--amber)]/10 to-transparent" />
               </div>
             </motion.div>
           ))}

@@ -26,7 +26,7 @@ export default function Leaderboard() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="font-heading text-6xl md:text-8xl text-[var(--white)] mb-4">
-            HALL OF LEGENDS
+            REBELLION ARCHIVES
           </h2>
           <div className="w-24 h-1 bg-[var(--gold)] mx-auto" />
         </motion.div>
@@ -94,10 +94,10 @@ export default function Leaderboard() {
               {/* Mode */}
               <span
                 className={`col-span-3 text-sm tracking-wider ${
-                  row.mode === 'COOP' ? 'text-blue-400' : 'text-[var(--red)]'
+                  row.mode === 'COOP' ? 'text-[var(--steel)]' : 'text-[var(--amber)]'
                 }`}
               >
-                {row.mode}
+                {row.mode === 'COOP' ? 'SQUAD' : 'SOLO'}
               </span>
 
               {/* Time */}
@@ -115,7 +115,7 @@ export default function Leaderboard() {
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          Play the game and write your name here.
+          Your name will be etched into the rebellion, if you survive.
         </motion.p>
       </div>
     </section>

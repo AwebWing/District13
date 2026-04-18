@@ -41,7 +41,7 @@ export default function Navbar() {
         style={{ borderBottom: '1px solid transparent' }}
       >
         <motion.div
-          className="absolute bottom-0 left-0 right-0 h-[1px] bg-[var(--red)]"
+          className="absolute bottom-0 left-0 right-0 h-[1px] bg-[var(--amber)]"
           style={{ opacity: borderTopOpacity }}
         />
 
@@ -49,10 +49,10 @@ export default function Navbar() {
           {/* Logo */}
           <motion.a
             href="#"
-            className="font-heading text-xl tracking-wider text-[var(--red)] hover:text-[var(--red-glow)] transition-colors"
-            style={{ textShadow: '0 0 10px rgba(232, 28, 28, 0.5)' }}
+            className="font-heading text-xl tracking-wider text-[var(--amber)] hover:text-[var(--amber-glow)] transition-colors"
+            style={{ textShadow: '0 0 10px rgba(217, 119, 6, 0.5)' }}
           >
-            WARZONE
+            DISTRICT 13
           </motion.a>
 
           {/* Desktop Nav */}
@@ -65,7 +65,7 @@ export default function Navbar() {
                   e.preventDefault();
                   scrollToSection(link.href);
                 }}
-                className="font-body text-sm uppercase tracking-widest text-[var(--white)] hover:text-[var(--red)] transition-colors"
+                className="font-body text-sm uppercase tracking-widest text-[var(--white)] hover:text-[var(--amber)] transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -105,7 +105,7 @@ export default function Navbar() {
                 e.preventDefault();
                 scrollToSection(link.href);
               }}
-              className="font-heading text-3xl tracking-wider text-[var(--white)] hover:text-[var(--red)] transition-colors"
+              className="font-heading text-3xl tracking-wider text-[var(--white)] hover:text-[var(--amber)] transition-colors"
               initial={{ opacity: 0, y: -20 }}
               animate={{
                 opacity: isMobileOpen ? 1 : 0,
