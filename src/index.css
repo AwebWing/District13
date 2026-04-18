@@ -1,0 +1,259 @@
+@import "tailwindcss";
+
+:root {
+  /* Color Palette */
+  --bg: #080808;
+  --surface: #111111;
+  --red: #e81c1c;
+  --red-glow: #ff3333;
+  --white: #f2ede8;
+  --gray: #2a2a2a;
+  --gold: #c9922a;
+  --green: #00ff88;
+
+  /* Typography */
+  --font-heading: 'Bebas Neue', sans-serif;
+  --font-body: 'Rajdhani', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Custom Cursor */
+  --cursor-size: 8px;
+  --cursor-lag-size: 32px;
+}
+
+* {
+  cursor: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  background-color: var(--red);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: transform 0.1s ease;
+}
+
+.custom-cursor-lag {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--cursor-lag-size);
+  height: var(--cursor-lag-size);
+  border: 1px solid rgba(232, 28, 28, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.15s ease-out;
+}
+
+.custom-cursor.hovered {
+  transform: scale(1.5);
+}
+
+.custom-cursor-lag.hovered {
+  transform: scale(1.2);
+  border-color: rgba(232, 28, 28, 0.6);
+}
+
+/* Grain Overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9000;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: transparent;
+  z-index: 9999;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  background: var(--red);
+  transform-origin: left;
+}
+
+/* Page Load Animation */
+.page-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.page-loader-top,
+.page-loader-bottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: var(--bg);
+}
+
+.page-loader-top {
+  top: 0;
+}
+
+.page-loader-bottom {
+  bottom: 0;
+}
+
+/* Typography Overrides */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Scanline Effect */
+.scanlines {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanlines::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Blinking Cursor Animation */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.blinking-cursor {
+  animation: blink 1s infinite;
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--surface) 0%,
+    var(--gray) 50%,
+    var(--surface) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Red Glow Animation */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(232, 28, 28, 0.4); }
+  50% { box-shadow: 0 0 40px rgba(232, 28, 28, 0.8); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Button Hover States */
+button, a.button {
+  cursor: none;
+}
+
+button:hover, a.button:hover {
+  cursor: crosshair;
+}
+
+/* Utility Classes */
+.font-heading { font-family: var(--font-heading); }
+.font-body { font-family: var(--font-body); }
+.font-mono { font-family: var(--font-mono); }
+
+.text-red { color: var(--red); }
+.text-gold { color: var(--gold); }
+.text-white { color: var(--white); }
+.text-green { color: var(--green); }
+
+.bg-surface { background-color: var(--surface); }
+.bg-red { background-color: var(--red); }
+
+.border-red { border-color: var(--red); }
+.border-gray { border-color: var(--gray); }
+.border-gold { border-color: var(--gold); }
+
+.shadow-red-glow {
+  box-shadow: 0 0 20px rgba(232, 28, 28, 0.5);
+}
+
+.text-shadow-red-glow {
+  text-shadow: 0 0 20px rgba(232, 28, 28, 0.8), 0 0 40px rgba(232, 28, 28, 0.4);
+}
+
+/* Section Spacing */
+section {
+  padding: 100px 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  :root {
+    --cursor-size: 6px;
+    --cursor-lag-size: 24px;
+  }
+
+  section {
+    padding: 60px 16px;
+  }
+}
