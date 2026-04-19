@@ -37,7 +37,7 @@ export default function Download() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="font-heading text-5xl md:text-8xl text-[var(--white)] mb-4">
-            SECURE THE INTEL
+            DOWNLOADABLE CONTENT
           </h2>
           <div className="w-24 h-1 bg-[var(--amber)] mx-auto mb-8" />
         </motion.div>
@@ -127,7 +127,7 @@ export default function Download() {
             whileTap={{ scale: 0.97 }}
             // REPLACE WITH ACTUAL DOWNLOAD LINK
           >
-            ⬇ DOWNLOAD v1.0 — UBUNTU 64-bit
+            ⬇ DOWNLOADABLE CONTENT — UBUNTU 64-bit
           </motion.a>
         </motion.div>
 
