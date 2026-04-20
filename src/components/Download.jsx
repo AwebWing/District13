@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Terminal, Copy, Check } from 'lucide-react';
 
-const compileCommand = 'gcc main.c -o game -lraylib -lm';
+const compileCommand = 'gcc main.c -o game -lSDL2 -lSDL2_image -lSDL2_ttf -lm';
 
 export default function Download() {
   const [copied, setCopied] = useState(false);
@@ -51,7 +51,7 @@ export default function Download() {
         >
           {[
             { label: 'OS', value: 'Ubuntu Linux 20.04+' },
-            { label: 'Dependency', value: 'sudo apt install libraylib-dev' },
+            { label: 'Dependency', value: 'sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev' },
             { label: 'Compile', value: compileCommand },
             { label: 'Controls', value: 'WASD · Space · F · E' },
           ].map((req, i) => (

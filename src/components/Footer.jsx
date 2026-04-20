@@ -31,7 +31,7 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <p className="font-body text-sm uppercase tracking-widest text-[var(--white)]/60">
-              Built with C · raylib · Ubuntu
+              Built with C · SDL2 · Ubuntu
             </p>
           </motion.div>
 

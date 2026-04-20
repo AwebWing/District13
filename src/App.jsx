@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import Gameplay from './components/Gameplay';
+import InteractiveController from './components/InteractiveController';
 import Download from './components/Download';
 import Leaderboard from './components/Leaderboard';
 import Footer from './components/Footer';
@@ -131,6 +132,7 @@ export default function App() {
             <Hero />
             <Features />
             <Gameplay />
+            <InteractiveController />
             <Download />
             <Leaderboard />
           </main>
